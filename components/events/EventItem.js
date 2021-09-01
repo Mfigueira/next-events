@@ -1,6 +1,6 @@
 import DateIcon from '../icons/DateIcon';
 import AddressIcon from '../icons/AddressIcon';
-import Button from '../UI/Button';
+import EventButton from '../UI/EventButton';
 import classes from './EventItem.module.css';
 import ArrowRightIcon from '../icons/ArrowRightIcon';
 
@@ -31,12 +31,12 @@ const EventItem = ({ event: { title, image, date, location, id } }) => {
           </div>
         </div>
         <div className={classes.actions}>
-          <Button href={detailsLink}>
+          <EventButton link={detailsLink}>
             <span>Explore Event</span>
             <span className={classes.icon}>
               <ArrowRightIcon />
             </span>
-          </Button>
+          </EventButton>
         </div>
       </div>
     </li>
