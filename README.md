@@ -1,3 +1,9 @@
+## What is this?
+
+This is a Demo Next.js project to see file based routing in action.
+
+Based on the lectures from Academind's Next.js course.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
