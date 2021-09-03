@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import EventsSearch from '../../components/events/EventsSearch';
 import EventList from '../../components/events/EventList';
@@ -13,6 +14,11 @@ const AllEventsPage = ({ allEvents }) => {
 
   return (
     <>
+      <Head>
+        <title>NextJS All Events</title>
+        <meta name="description" content="This is a demo Next JS events app" />
+      </Head>
+
       <EventsSearch onFilterEvents={filterEvents} />
       <EventList events={allEvents} />
     </>

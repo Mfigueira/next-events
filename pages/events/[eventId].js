@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import EventSummary from '../../components/event-detail/EventSummary';
 import EventLogistics from '../../components/event-detail/EventLogistics';
 import EventContent from '../../components/event-detail/EventContent';
@@ -6,6 +7,11 @@ import { httpGetEventById, httpGetFeaturedEvents } from '../../util/helpers';
 const EventDetailsPage = ({ event }) => {
   return (
     <>
+      <Head>
+        <title>NextJS {event.title} Details</title>
+        <meta name="description" content={event.description} />
+      </Head>
+
       <EventSummary title={event.title} />
       <EventLogistics
         date={event.date}

@@ -1,11 +1,17 @@
+import Head from 'next/head';
 import EventList from '../components/events/EventList';
 import { httpGetFeaturedEvents } from '../util/helpers';
 
 const HomePage = ({ featuredEvents }) => {
   return (
-    <div>
+    <>
+      <Head>
+        <title>NextJS Featured Events</title>
+        <meta name="description" content="This is a demo Next JS events app" />
+      </Head>
+
       <EventList events={featuredEvents} />
-    </div>
+    </>
   );
 };
 

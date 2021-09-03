@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
@@ -27,13 +28,32 @@ const FilteredEventsPage = () => {
     }
   }, [data]);
 
+  let pageHeadData = (
+    <Head>
+      <title>NextJS Filtered Events</title>
+      <meta name="description" content="All Filtered Events" />
+    </Head>
+  );
+
   if (!events.length) {
-    return <p className="center">Loading...</p>;
+    return (
+      <>
+        {pageHeadData}
+        <p className="center">Loading...</p>
+      </>
+    );
   }
 
   let [year, month] = filters;
   year = Number(year);
   month = Number(month);
+
+  pageHeadData = (
+    <Head>
+      <title>NextJS Filtered Events</title>
+      <meta name="description" content={`All Events for ${month}/${year}`} />
+    </Head>
+  );
 
   if (
     isNaN(year) ||
@@ -45,10 +65,13 @@ const FilteredEventsPage = () => {
     error
   ) {
     return (
-      <div className="center">
-        <p>Invalid Filter. Please adjust your values!</p>
-        <EventButton link="/events">Show All Events</EventButton>
-      </div>
+      <>
+        {pageHeadData}
+        <div className="center">
+          <p>Invalid Filter. Please adjust your values!</p>
+          <EventButton link="/events">Show All Events</EventButton>
+        </div>
+      </>
     );
   }
 
@@ -60,16 +83,22 @@ const FilteredEventsPage = () => {
   });
 
   if (!filteredEvents || filteredEvents.length === 0) {
-    <div className="center">
-      <p>No events found for the chosen filters!</p>
-      <EventButton href="/events">Show All Events</EventButton>
-    </div>;
+    return (
+      <>
+        {pageHeadData}
+        <div className="center">
+          <p>No events found for the chosen filters!</p>
+          <EventButton link="/events">Show All Events</EventButton>
+        </div>
+      </>
+    );
   }
 
   const date = new Date(year, month - 1);
 
   return (
     <>
+      {pageHeadData}
       <ResultsTitle date={date} />
       <EventList events={filteredEvents} />
     </>
