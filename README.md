@@ -1,8 +1,10 @@
 ## What is this?
 
-This is a Demo Next.js project to see file based routing in action.
+This is a demo Next.js App to see file based routing, SSG and SSR in action.
 
 Based on the lectures from Academind's Next.js course.
+
+Used .env.local file to configure db access.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
