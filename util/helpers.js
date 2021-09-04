@@ -6,7 +6,7 @@ export const httpGetAllEvents = async () => {
   let events = [];
 
   try {
-    const res = await fetch(process.env.EVENTS_DB_ROUTE);
+    const res = await fetch(process.env.NEXT_PUBLIC_EVENTS_DB_ROUTE);
     const data = await res.json();
 
     events = Object.entries(data).map((event) => {
@@ -45,6 +45,17 @@ export const httpGetFilteredEvents = async (dateFilter) => {
   });
 
   return filteredEvents;
+};
+
+export const httpGetCommentsFromEventById = async (eventId) => {
+  const events = await httpGetAllEvents();
+  const { comments } = events.find((event) => event.id === eventId);
+  return !comments
+    ? []
+    : Object.keys(comments).map((cId) => ({
+        id: cId,
+        ...comments[cId],
+      }));
 };
 
 export const fetcherSWR = (url) => fetch(url).then((res) => res.json());

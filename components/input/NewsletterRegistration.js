@@ -19,7 +19,7 @@ const NewsletterRegistration = () => {
     });
     const data = await res.json();
 
-    console.log('registered :>> ', data.message);
+    console.log('registered :>> ', data);
 
     emailInputRef.current.value = '';
   };

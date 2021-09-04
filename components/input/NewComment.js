@@ -11,28 +11,30 @@ const NewComment = ({ onAddComment }) => {
   const handleSendComment = (event) => {
     event.preventDefault();
 
-    const enteredEmail = emailInputRef.current.value;
-    const enteredName = nameInputRef.current.value;
-    const enteredComment = commentInputRef.current.value;
+    const email = emailInputRef.current.value;
+    const username = nameInputRef.current.value;
+    const text = commentInputRef.current.value;
 
     if (
-      !enteredEmail ||
-      enteredEmail.trim() === '' ||
-      !enteredEmail.includes('@') ||
-      !enteredName ||
-      enteredName.trim() === '' ||
-      !enteredComment ||
-      enteredComment.trim() === ''
+      !email ||
+      email.trim() === '' ||
+      !email.includes('@') ||
+      !username ||
+      username.trim() === '' ||
+      !text ||
+      text.trim() === ''
     ) {
       setIsInvalid(true);
       return;
     }
 
-    onAddComment({
-      email: enteredEmail,
-      name: enteredName,
-      text: enteredComment,
-    });
+    const comment = {
+      email,
+      username,
+      text,
+    };
+
+    onAddComment(comment);
   };
 
   return (
