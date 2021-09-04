@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import EventList from '../components/events/EventList';
+import NewsletterRegistration from '../components/input/NewsletterRegistration';
 import { httpGetFeaturedEvents } from '../util/helpers';
 
 const HomePage = ({ featuredEvents }) => {
@@ -10,6 +11,7 @@ const HomePage = ({ featuredEvents }) => {
         <meta name="description" content="This is a demo Next JS events app" />
       </Head>
 
+      <NewsletterRegistration />
       <EventList events={featuredEvents} />
     </>
   );
