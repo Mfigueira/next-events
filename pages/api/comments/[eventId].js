@@ -20,14 +20,19 @@ const handler = async (req, res) => {
         return;
       }
 
-      const fbRes = await fetch(
+      const firebaseResponse = await fetch(
         process.env.NEXT_PUBLIC_COMMENTS_DB_ROUTE.replace('{eventId}', eventId),
         {
           method: 'POST',
           body: JSON.stringify({ email, username, text }),
         }
       );
-      const data = await fbRes.json();
+
+      if (!firebaseResponse.ok) {
+        throw new Error('Could not create message.');
+      }
+
+      const data = await firebaseResponse.json();
 
       const comment = {
         id: data.name,
@@ -43,9 +48,8 @@ const handler = async (req, res) => {
       const comments = await httpGetCommentsFromEventById(eventId);
       res.status(200).json({ message: 'Fetched Comments', comments });
     }
-  } catch (err) {
-    console.log('err :>> ', err);
-    res.status(500).json({ message: 'An error has ocurred.' });
+  } catch (error) {
+    res.status(500).json({ message: error.message || 'An error has ocurred.' });
   }
 };
 

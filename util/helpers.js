@@ -6,8 +6,11 @@ export const httpGetAllEvents = async () => {
   let events = [];
 
   try {
-    const res = await fetch(process.env.NEXT_PUBLIC_EVENTS_DB_ROUTE);
-    const data = await res.json();
+    const response = await fetch(process.env.NEXT_PUBLIC_EVENTS_DB_ROUTE);
+
+    if (!response.ok) throw new Error('Could not fetch events.');
+
+    const data = await response.json();
 
     events = Object.entries(data).map((event) => {
       const [id, eventData] = event;
@@ -16,8 +19,8 @@ export const httpGetAllEvents = async () => {
         ...eventData,
       };
     });
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
   } finally {
     return events;
   }

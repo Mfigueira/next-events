@@ -2,7 +2,7 @@
 
 This is a Demo Next.js Events App.
 
-It leverages File Based Routing, SSG, SSR, useSWR, \_app.js, \_document.js, optimization with next/image, metadata with next/head, and API routes with GET and POST to Firebase RTDB.
+It leverages File Based Routing, SSG, SSR, useSWR, \_app.js, \_document.js, optimization with next/image, metadata with next/head, API routes with GET and POST to Firebase RTDB, and app wide notifications state with Context API.
 
 Based on the lectures from Academind's Next.js course.
 

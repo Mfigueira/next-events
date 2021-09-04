@@ -8,16 +8,22 @@ const handler = async (req, res) => {
         return;
       }
 
-      await fetch(process.env.NEXT_PUBLIC_NEWSLETTER_DB_ROUTE, {
-        method: 'POST',
-        body: JSON.stringify({ email }),
-      });
+      const firebaseResponse = await fetch(
+        process.env.NEXT_PUBLIC_NEWSLETTER_DB_ROUTE,
+        {
+          method: 'POST',
+          body: JSON.stringify({ email }),
+        }
+      );
+
+      if (!firebaseResponse.ok) {
+        throw new Error('Could not register to newsletter.');
+      }
 
       res.status(201).json({ message: 'Registered in Newsletter!' });
     }
-  } catch (err) {
-    console.log('err :>> ', err);
-    res.status(500).json({ message: 'An error has ocurred.' });
+  } catch (error) {
+    res.status(500).json({ message: error.message || 'An error has ocurred.' });
   }
 };
 
