@@ -1,6 +1,8 @@
 ## What is this?
 
-This is a demo Next.js App to see file based routing, SSG and SSR in action.
+This is a Demo Next.js Events App.
+
+It leverages File Based Routing, SSG, SSR, useSWR, \_app.js, \_document.js, optimization with next/image, metadata with next/head, and API routes with GET and POST to Firebase RTDB.
 
 Based on the lectures from Academind's Next.js course.
 
