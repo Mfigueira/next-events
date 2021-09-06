@@ -21,7 +21,7 @@ const handler = async (req, res) => {
       }
 
       const firebaseResponse = await fetch(
-        process.env.NEXT_PUBLIC_COMMENTS_DB_ROUTE.replace('{eventId}', eventId),
+        process.env.COMMENTS_DB_ROUTE.replace('{eventId}', eventId),
         {
           method: 'POST',
           body: JSON.stringify({ email, username, text }),
