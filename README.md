@@ -6,4 +6,8 @@ It leverages File Based Routing, SSG, SSR, useSWR, \_app.js, \_document.js, opti
 
 Based on the lectures from Academind's Next.js course and enhanced with personal touches.
 
-Used .env.local file to configure Firebase RTDB access.
+Used .env.local file to configure Firebase RTDB access (Added to Vercel upon deployment).
+
+## Deployment?
+
+[Here on Vercel](https://next-events-mf.vercel.app/)!
